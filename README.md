@@ -13,3 +13,4 @@
 * Activity lifecycle callbacks.
 * Current thread name, class name, method name.
 * Throw RuntimeException.
+* Constants.
