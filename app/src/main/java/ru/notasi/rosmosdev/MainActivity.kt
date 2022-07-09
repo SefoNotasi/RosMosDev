@@ -7,9 +7,11 @@ import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.ktx.Firebase
 import ru.notasi.rosmosdev.utils.Debugger
 
-private const val className = "MainActivity"
-
 class MainActivity : BaseActivity() {
+
+    private companion object {
+        private val className = MainActivity::class.java.simpleName
+    }
 
     private lateinit var analytics: FirebaseAnalytics
 

@@ -7,8 +7,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import ru.notasi.rosmosdev.utils.Debugger
 
-private const val className = "BaseActivity"
-
 /**
  * https://stackoverflow.com/questions/31297246/activity-appcompatactivity-fragmentactivity-and-actionbaractivity-when-to-us
  *
@@ -43,6 +41,10 @@ abstract class BaseActivity : AppCompatActivity() {
      * Back press (on last (main) activity):
      * onBackPressed > onPause > onStop > onDestroy
      */
+
+    private companion object {
+        private val className = MainActivity::class.java.simpleName
+    }
 
     /**
      * Called when the activity is first created.
