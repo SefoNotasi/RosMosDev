@@ -18,3 +18,7 @@
 * Current thread name, class name, method name.
 * Throw RuntimeException.
 * Constants.
+* ViewBinding.
+* BaseFragment, Fragments.
+* ViewPager2.
+* TabsAdapter.

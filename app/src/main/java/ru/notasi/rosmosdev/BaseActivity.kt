@@ -2,9 +2,11 @@ package ru.notasi.rosmosdev
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewbinding.ViewBinding
 import ru.notasi.rosmosdev.utils.Debugger
 
 /**
@@ -21,7 +23,7 @@ import ru.notasi.rosmosdev.utils.Debugger
  * Android Documentation recommends using AppCompatActivity if you are using an App Bar.
  */
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     /**
      * Activity lifecycle callbacks.
@@ -47,6 +49,15 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     /**
+     * https://stackoverflow.com/a/68338728
+     * How using ViewBinding with an abstract base class.
+     */
+
+    protected lateinit var binding: VB
+
+    abstract fun inflateLayout(inflater: LayoutInflater): VB
+
+    /**
      * Called when the activity is first created.
      * This is where you should do all of your normal static set up: create views, bind data to lists, etc.
      * This method also provides you with a Bundle containing the activity's previously frozen state,
@@ -62,6 +73,9 @@ abstract class BaseActivity : AppCompatActivity() {
             className = className,
             methodName = object {}.javaClass.enclosingMethod?.name
         )
+
+        binding = inflateLayout(inflater = layoutInflater)
+        setContentView(binding.root)
     }
 
     /**
