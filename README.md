@@ -1,9 +1,13 @@
 # RosMosDev | РосМосДев
+
 ## #RMD | #РМД
+
 * Kotlin.
 * Minimum SDK: API 16, Android 4.1 (Jelly Bean).
 * Target SDK: API 32, Android 12L.
+
 ###
+
 * Git, gitignore, GitHub.
 * BaseActivity, MainActivity.
 * Google Services.
