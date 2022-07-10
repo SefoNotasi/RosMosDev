@@ -2,6 +2,8 @@ package ru.notasi.rosmosdev
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
@@ -21,7 +23,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         ActivityMainBinding.inflate(inflater)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val contentView = findViewById<View>(android.R.id.content)
+        contentView.viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
+
+            override fun onGlobalLayout() {
+                contentView.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                val appLaunchTime = System.currentTimeMillis() - MainApp.appStartTime
+                Debugger.log("App launch time: $appLaunchTime")
+            }
+
+        })
         super.onCreate(savedInstanceState)
+
         analytics = Firebase.analytics
         initTabs()
         debug()

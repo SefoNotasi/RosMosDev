@@ -22,3 +22,5 @@
 * BaseFragment, Fragments.
 * ViewPager2.
 * TabsAdapter.
+* MainApp.
+* Startup time measurement.
