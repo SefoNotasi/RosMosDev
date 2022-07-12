@@ -6,8 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 
 private val tabsTitles = arrayOf(
     "1st",
-    "2nd",
-    "3rd"
+    "2nd"
 )
 
 class TabsAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
@@ -17,8 +16,7 @@ class TabsAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> MainFragment.newInstance()
-            1 -> MainFragment.newInstance()
-            2 -> MainFragment.newInstance()
+            1 -> CrashlyticsFragment.newInstance()
             else -> MainFragment.newInstance()
         }
     }

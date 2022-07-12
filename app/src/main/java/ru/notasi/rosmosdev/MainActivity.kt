@@ -13,10 +13,6 @@ import ru.notasi.rosmosdev.utils.Debugger
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    private companion object {
-        private val className = MainActivity::class.java.simpleName
-    }
-
     private lateinit var analytics: FirebaseAnalytics
 
     override fun inflateLayout(inflater: LayoutInflater) =
@@ -37,9 +33,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         analytics = Firebase.analytics
         initTabs()
-        debug()
-        debugMessage()
-        catchCrash()
     }
 
     private fun initTabs() = with(binding) {
@@ -49,23 +42,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             tab.text = "Tab $position"
         }.attach()
     }
-
-    private fun debug() = Debugger.log(
-        threadName = Thread.currentThread().name,
-        className = className,
-        methodName = object {}.javaClass.enclosingMethod?.name,
-        message = "Test debug"
-    )
-
-    private fun debugMessage() = Debugger.log(message = "Test debug message")
-
-
-    private fun catchCrash() = Debugger.log(
-        threadName = Thread.currentThread().name,
-        className = className,
-        methodName = object {}.javaClass.enclosingMethod?.name,
-        message = "Test debug",
-        throwable = RuntimeException("Test throwable runtime exception")
-    )
 
 }

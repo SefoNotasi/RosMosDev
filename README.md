@@ -24,3 +24,5 @@
 * TabsAdapter.
 * MainApp.
 * Startup time measurement.
+* CrashlyticsFragment.
+* Dimens, RecyclerView, model, interface, CardView, adapter, ViewHolder, toast.
